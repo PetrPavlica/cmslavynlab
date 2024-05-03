@@ -1,0 +1,16 @@
+{* Latte template *}
+
+{block content}
+        
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#people" aria-expanded="false" aria-controls="people">
+    Přidat člověka
+  </button>
+
+{if $action == 'peopleForm-edit'}
+    <div class='collapse.show' id="people">
+{else}
+    <div class='collapse' id="people">
+{/if}    
+{control userForm}
+</div>
+{control people}

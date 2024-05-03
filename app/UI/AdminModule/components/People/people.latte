@@ -1,0 +1,74 @@
+{* Latte template *}
+
+{block content}
+                        
+<!-- row -->
+        <div class="row mt">
+          <div class="col-md-12">
+            <div class="content-panel">
+              <table class="table table-striped table-advance table-hover">
+                <h4><i class="fa fa-angle-right"></i> Lidé</h4>
+                <hr>
+                <thead>
+                  <tr>
+                    <th>ID <a href="{link orderby!,'id'}"><i class="fa fa-arrow-down"></i></a><a href="{link orderby!,'id DESC'}"><i class="fa fa-arrow-up"></i></a></th>
+                    <th>Jméno <a href="{link orderby!,'name'}"><i class="fa fa-arrow-down"></i></a><a href="{link orderby!,'name DESC'}"><i class="fa fa-arrow-up"></i></a></th>
+                    <th>Telefon</th>
+                    <th>Email <a href="{link orderby!,'email'}"><i class="fa fa-arrow-down"></i></a><a href="{link orderby!,'email DESC'}"><i class="fa fa-arrow-up"></i></a></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                {foreach $allUsers as $users}    
+                  <tr>
+                    <td>
+                      {$users['id']}
+                    </td>
+                    
+                    <td>{$users['name']}</td>
+                    <td>{$users['phone']}</td>
+                    <td>{$users['email']}</td>
+                    
+                    <td>
+                        {if $users['active'] == 1}
+                            <span class="label label-success">Aktivní</span>
+                        {elseif $users['active'] == 0}
+                            <span class="label label-danger label-mini">Vypnutý</span>
+                        {/if}
+                       
+                  
+                    </td>
+                    <td>
+                      <a href="{plink People:peopledetail,$users['people_information_id']}"><button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button></a>
+                      <button class="btn btn-danger btn-xs" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fa fa-trash-o "></i></button>
+                    </td>
+                  </tr>
+                  {/foreach}                  
+                </tbody>
+              </table>
+               <div class="pagination">
+                {if !$paginator->isFirst()}
+                        <a n:href="peoplepage!, 1">První</a>
+                        &nbsp;|&nbsp;
+                        <a n:href="peoplepage!, $paginator->page-1">Předchozí</a>
+                        &nbsp;|&nbsp;
+                {/if}
+
+                Stránka {$paginator->getPage()} z {$paginator->getPageCount()}
+
+                {if !$paginator->isLast()}
+                        &nbsp;|&nbsp;
+                        <a n:href="peoplepage!, $paginator->getPage() + 1">Další</a>
+                        &nbsp;|&nbsp;
+                        <a n:href="peoplepage!, $paginator->getPageCount()">Poslední</a>
+                {/if}
+                </div> 
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-md-12 -->
+        </div>
+        <!-- /row -->
+ 
+<!-- The Modal -->
+

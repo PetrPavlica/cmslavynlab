@@ -1,0 +1,11 @@
+{* Latte template *}
+
+{block content}
+{if $do == 'peopleForm-edit'}
+{control peopleForm}
+{/if}
+{if $do == 'peopleInfForm-edit'}
+{control peopleInfForm}
+{/if}
+
+{control peopleDetail}

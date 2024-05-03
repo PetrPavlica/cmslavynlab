@@ -1,0 +1,50 @@
+{* Latte template *}
+
+
+{block content}
+<div class="row mt">
+          <div class="col-lg-12">
+            <div class="form-panel">
+              <h4 class="mb"><i class="fa fa-angle-right"></i> Další informace o</h4>
+                 <form n:name="peopleInfForm" class='form-horizontal style-form'>
+                     <div class='form-group'>
+                        <label n:name='city' class="col-sm-2 col-sm-2 control-label" for="city">Město</label>
+                       <div class="col-sm-8"> 
+                        <input n:name='city' type='text' id='city' class="form-control round-form">
+                       </div> 
+                    </div>
+                    <div class='form-group'>
+                        <label n:name='street' class="col-sm-2 col-sm-2 control-label" for="street">Ulice</label>
+                       <div class="col-sm-8"> 
+                        <input n:name='street' type='text' id='street' class="form-control round-form">
+                       </div> 
+                    </div>
+                     <div class='form-group'>
+                        <label n:name='house_number' class="col-sm-2 col-sm-2 control-label" for="house_number">Číslo popisné</label>
+                       <div class="col-sm-8"> 
+                        <input n:name='house_number' type='text' id='house_number' class="form-control round-form">
+                       </div> 
+                    </div>
+                     <div class='form-group'>
+                        <label n:name='zip' class="col-sm-2 col-sm-2 control-label" for="zip">PSC</label>
+                       <div class="col-sm-8"> 
+                        <input n:name='zip' type='text' id='zip' class="form-control round-form">
+                       </div> 
+                    </div>
+                    <div class='form-group'>
+                        <label n:name='bank_number' class="col-sm-2 col-sm-2 control-label" for="bank_number">Číslo účtu</label>
+                       <div class="col-sm-8"> 
+                        <input n:name='bank_number' type='text' id='bank_number' class="form-control round-form">
+                       </div> 
+                    </div>
+                
+                    <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                      <button n:name='send' class="btn btn-theme" type="submit">Uložit</button>
+                      
+                    </div>
+                  </div>
+                </form>
+            </div>
+           </div>
+</div>                    

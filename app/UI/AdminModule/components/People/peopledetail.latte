@@ -1,0 +1,118 @@
+{* Latte template *}
+
+{block content}
+ <a href="{plink peopleForm:edit!,$people['id']}"><button class="btn btn-primary" type="button">
+    Změnit základní údaje
+  </button></a>
+<a href="{plink peopleInfForm:edit!,$people['id']}"><button class="btn btn-primary" type="button">
+    Změnit další údaje
+  </button></a>
+<a href="{plink peopleInfForm:edit!,$people['id']}"><button class="btn btn-primary" type="button">
+    Změnit další údaje
+  </button></a>
+{if $people['active'] == 1}
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#block">Zablokovat uživatele</button>  
+    {elseif $people['active'] == 0}
+        <button class="btn btn-send" data-bs-toggle="modal" data-bs-target="#unblock">Odblokovat uživatele</button>   
+{/if}    
+ 
+<!-- row -->
+        <div class="row mt">
+          <div class="col-md-12">
+            <div class="content-panel">
+              <table class="table table-striped table-advance table-hover">
+                <h4><i class="fa fa-angle-right"></i> Detail člověka</h4>
+                <hr>
+                
+                <tbody>
+                  <tr>
+                      <td>Jméno:</td>
+                      <td>{$people['name']}</td>
+                  </tr>
+                      <tr>
+                      <td>Stav:</td>
+                           <td>
+                 
+                                {if $people['active'] == 1}
+                                    <span class="label label-success">Aktivní</span>
+                                {elseif $people['active'] == 0}
+                                     <span class="label label-danger">Vypnutý</span>
+                                {/if}
+                           </td>
+                      </tr>
+                  <tr>
+                       <td>Email:</td>
+                      <td>{$people['email']}</td>
+                   </tr>
+                   <tr>
+                      <td>Telefon:</td>
+                      <td>{$people['phone']}</td>
+                  </tr>
+                  <tr>
+                      <td>Pozice:</td>
+                      <td>{$pozition[$people['pozition']]}</td>
+                  </tr>
+                  {if $people_inf != null}
+                  <tr>
+                      <td>Adresa:</td>
+                      <td>{$people_inf['city']}</td>
+                  </tr>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                  </tr>
+                  {else}
+                    <tr>
+                      <td>Detaily uživatele nejsou vyplněné</td>
+                      
+                    </tr>  
+                  {/if}
+                </tbody>
+              </table>
+                
+            </div>
+            <!-- /content-panel -->
+          </div>
+          <!-- /col-md-12 -->
+        </div>
+        <!-- /row -->
+ 
+<!-- The Modal -->
+<div class="modal" id="block">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Chcete zablokovat uživatele?
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <a href="{plink peopleForm:block!,$people['id']}"><button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zablokovat</button></a>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zavřít</button>
+        
+      </div>
+
+    </div>
+  </div>
+</div>
+<div class="modal" id="unblock">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Chcete odblokovat uživatele?
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <a href="{plink peopleForm:unblock!,$people['id']}"><button type="button" class="btn btn-success" data-bs-dismiss="modal">Odblokovat</button></a>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Zavřít</button>
+        
+      </div>
+
+    </div>
+  </div>
+</div>
